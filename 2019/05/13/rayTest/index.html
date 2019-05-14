@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="rayTest, Ray Of Programming">
-    <meta name="description" content="rayTest | Ray Of Programming">
+    <meta name="keywords" content="LeetCode general Solution for BST, Ray Of Programming">
+    <meta name="description" content="In Order TraverseThere are a quite few leet code questions that is based on BST traverse.Here is a general template that">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>rayTest | Ray Of Programming</title>
+    <title>LeetCode general Solution for BST | Ray Of Programming</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -202,6 +202,8 @@
 
 
 
+<link rel="stylesheet" href="/css/hightlight.css">
+
 
 
 <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
@@ -210,7 +212,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        rayTest
+                        LeetCode general Solution for BST
                     </div>
                 </div>
             </div>
@@ -319,9 +321,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/leetcode-BST/" target="_blank">
+                                <span class="chip bg-color">leetcode, BST</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -343,7 +349,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="In-Order-Traverse"><a href="#In-Order-Traverse" class="headerlink" title="In Order Traverse"></a>In Order Traverse</h2><p>There are a quite few leet code questions that is based on BST traverse.<br>Here is a general template that could be used to solve similar problems.</p>
+<p>The idea is using a set to store the intermediate result.</p>
+<p>LeetCode 94</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line"><span class="keyword">var</span> treeNode = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">this</span>.val = val;</span><br><span class="line">     <span class="keyword">this</span>.left = <span class="keyword">this</span>.right = <span class="literal">null</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> inOrderTraverse = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> list = [];</span><br><span class="line">    <span class="keyword">let</span> stack = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (root != <span class="literal">null</span> || stack.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (root != <span class="literal">null</span>) &#123;</span><br><span class="line">            stack.push(root);</span><br><span class="line">            root = root.left;</span><br><span class="line">        &#125;    </span><br><span class="line">        root = stack.pop();</span><br><span class="line">        list.push(root.val);</span><br><span class="line">        root = root.right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
             </div>
             <hr>
 
@@ -374,7 +384,7 @@
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《rayTest》
+                    《LeetCode general Solution for BST》
                 </span> by
             <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/13/rayTest/" property="cc:attributionName" rel="cc:attributionURL">
                 Ray Zhang
@@ -424,15 +434,15 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="rayTest">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="LeetCode general Solution for BST">
                         
-                        <span class="card-title">rayTest</span>
+                        <span class="card-title">LeetCode general Solution for BST</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            In Order TraverseThere are a quite few leet code questions that is based on BST traverse.Here is a general template that
                         
                     </div>
                     <div class="publish-info">
@@ -448,6 +458,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode-BST/" target="_blank">
+                        <span class="chip bg-color">leetcode, BST</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -591,6 +609,7 @@
     
 
 </main>
+
 
 
 <footer class="page-footer bg-color">
