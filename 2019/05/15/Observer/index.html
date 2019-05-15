@@ -4,8 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="LeetCode general Solution for BST In Order Traverse, Ray Of Programming">
-    <meta name="description" content="In Order TraverseThere are a quite few leet code questions that is based on BST traverse.Here is a general template that">
+    <meta name="keywords" content="Observer Pattern, Ray Of Programming">
+    <meta name="description" content="Observer PatternObserver Pattern is commonly use to implement Pub/Sub model.
+IObservable Has-A IObservable
+WeatherStatio">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>LeetCode general Solution for BST In Order Traverse | Ray Of Programming</title>
+    <title>Observer Pattern | Ray Of Programming</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -206,13 +208,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        LeetCode general Solution for BST In Order Traverse
+                        Observer Pattern
                     </div>
                 </div>
             </div>
@@ -323,8 +325,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/BST/" target="_blank">
-                                <span class="chip bg-color">BST</span>
+                            <a href="/tags/Design-Pattern/" target="_blank">
+                                <span class="chip bg-color">Design Pattern</span>
                             </a>
                         
                     </div>
@@ -338,7 +340,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-05-13
+                    2019-05-15
                 </div>
 
                 
@@ -349,13 +351,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="In-Order-Traverse"><a href="#In-Order-Traverse" class="headerlink" title="In Order Traverse"></a>In Order Traverse</h2><p>There are a quite few leet code questions that is based on BST traverse.Here is a general template that could be used to solve similar problems.The idea is using a set to store the intermediate result.<br>The solution is in javascript.</p>
-<p>LeetCode 94</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="comment">//Definition for a binary tree node.</span></span><br><span class="line"><span class="keyword">var</span> treeNode = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">this</span>.val = val;</span><br><span class="line">     <span class="keyword">this</span>.left = <span class="keyword">this</span>.right = <span class="literal">null</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> inOrderTraverse = <span class="function"><span class="keyword">function</span> (<span class="params">root</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> list = [];</span><br><span class="line">    <span class="keyword">let</span> stack = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (root != <span class="literal">null</span> || stack.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (root != <span class="literal">null</span>) &#123;</span><br><span class="line">            stack.push(root);</span><br><span class="line">            root = root.left;</span><br><span class="line">        &#125;    </span><br><span class="line">        root = stack.pop();</span><br><span class="line">        list.push(root.val);</span><br><span class="line">        root = root.right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>LeetCode 230</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> kthSmallest = <span class="function"><span class="keyword">function</span>(<span class="params">root, k</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> stack = [];</span><br><span class="line">    <span class="keyword">let</span> list = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (root != <span class="literal">null</span> || stack.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">           </span><br><span class="line">        <span class="keyword">while</span> (root != <span class="literal">null</span>) &#123;</span><br><span class="line">            </span><br><span class="line">            stack.push(root);</span><br><span class="line">            root = root.left;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        root = stack.pop();</span><br><span class="line">        list.push(root.val);</span><br><span class="line">        <span class="keyword">if</span> (list.length == k) &#123;</span><br><span class="line">            <span class="keyword">return</span> root.val;</span><br><span class="line">        &#125;</span><br><span class="line">        root = root.right;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>LeetCode 98</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isValidBST = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> stack = [];</span><br><span class="line">    <span class="comment">//let list = [];</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (root === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> prev = <span class="literal">null</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (root !== <span class="literal">null</span> || stack.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (root !== <span class="literal">null</span>) &#123;</span><br><span class="line">    </span><br><span class="line">            stack.push(root);</span><br><span class="line">            root = root.left;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        root = stack.pop();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (prev != <span class="literal">null</span> &amp;&amp; root.val &lt;= prev.val) &#123; </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        prev = root;</span><br><span class="line">        <span class="comment">//list.push(root.val);</span></span><br><span class="line">        root = root.right;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h3 id="Observer-Pattern"><a href="#Observer-Pattern" class="headerlink" title="Observer Pattern"></a>Observer Pattern</h3><p>Observer Pattern is commonly use to implement Pub/Sub model.</p>
+<p>IObservable Has-A IObservable</p>
+<p>WeatherStation Is-A IObservable</p>
+<p>PhoneDisplay Is-A Observer</p>
+<p>PhoneDisplay Has-A WeatherStation</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IObservable &#123;</span><br><span class="line">    add(Observer)</span><br><span class="line">    remove(Observer)</span><br><span class="line">    notify(Observer)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IObserver &#123;</span><br><span class="line">    update()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> weatherStation <span class="keyword">implements</span> Observable &#123;</span><br><span class="line">   </span><br><span class="line">   observers: array;</span><br><span class="line">   </span><br><span class="line">   add (observer:IObserver) &#123;</span><br><span class="line">   </span><br><span class="line">        observers.push(observer);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   remove (observer:IObserver) &#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   notify () &#123;</span><br><span class="line">        observers.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">observer</span>) </span>&#123;</span><br><span class="line">            observer.update();</span><br><span class="line">        &#125;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> phoneDisplay <span class="keyword">implements</span> Observable &#123;</span><br><span class="line">    </span><br><span class="line">    construct(station:WeatherStation) &#123;</span><br><span class="line">        <span class="keyword">this</span>.station = station;</span><br><span class="line">    &#125;    </span><br><span class="line">    </span><br><span class="line">    update() &#123;</span><br><span class="line">        <span class="keyword">this</span>.station.getTemp();</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -395,7 +396,56 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2019/05/15/Observer/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Observer Pattern">
+                        
+                        <span class="card-title">Observer Pattern</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Observer PatternObserver Pattern is commonly use to implement Pub/Sub model.
+IObservable Has-A IObservable
+WeatherStatio
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            Ray Zhang
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Design-Pattern/" target="_blank">
+                        <span class="chip bg-color">Design Pattern</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/05/13/Strategy/">
                     <div class="card-image">
@@ -413,9 +463,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -429,52 +479,6 @@
                     
                     <a href="/tags/Design-Pattern/" target="_blank">
                         <span class="chip bg-color">Design Pattern</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/05/13/leetCode1/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="LeetCode general Solution for BST In Order Traverse">
-                        
-                        <span class="card-title">LeetCode general Solution for BST In Order Traverse</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            In Order TraverseThere are a quite few leet code questions that is based on BST traverse.Here is a general template that
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            Ray Zhang
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/BST/" target="_blank">
-                        <span class="chip bg-color">BST</span>
                     </a>
                     
                 </div>
