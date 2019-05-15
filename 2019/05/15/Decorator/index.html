@@ -4,10 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Observer Pattern, Ray Of Programming">
-    <meta name="description" content="Observer PatternObserver Pattern is commonly use to implement Pub/Sub model.
-IObservable Has-A IObservable
-WeatherStatio">
+    <meta name="keywords" content="Decorator, Ray Of Programming">
+    <meta name="description" content="Decorator Pattern Decorator
+ AddOnDecoractor is-A Beverage SolidCoffeeCLass is-A Beverage Decorator is-A AddOnDecoractor">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@ WeatherStatio">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Observer Pattern | Ray Of Programming</title>
+    <title>Decorator | Ray Of Programming</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -208,13 +207,13 @@ WeatherStatio">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Observer Pattern
+                        Decorator
                     </div>
                 </div>
             </div>
@@ -351,12 +350,10 @@ WeatherStatio">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Observer-Pattern"><a href="#Observer-Pattern" class="headerlink" title="Observer Pattern"></a>Observer Pattern</h3><p>Observer Pattern is commonly use to implement Pub/Sub model.</p>
-<p>IObservable Has-A IObservable</p>
-<p>WeatherStation Is-A IObservable</p>
-<p>PhoneDisplay Is-A Observer</p>
-<p>PhoneDisplay Has-A WeatherStation</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IObservable &#123;</span><br><span class="line">    add(Observer)</span><br><span class="line">    remove(Observer)</span><br><span class="line">    notify(Observer)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IObserver &#123;</span><br><span class="line">    update()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> weatherStation <span class="keyword">implements</span> Observable &#123;</span><br><span class="line">   </span><br><span class="line">   observers: array;</span><br><span class="line">   </span><br><span class="line">   add (observer:IObserver) &#123;</span><br><span class="line">   </span><br><span class="line">        observers.push(observer);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   remove (observer:IObserver) &#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   notify () &#123;</span><br><span class="line">        observers.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">observer</span>) </span>&#123;</span><br><span class="line">            observer.update();</span><br><span class="line">        &#125;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> phoneDisplay <span class="keyword">implements</span> Observable &#123;</span><br><span class="line">    </span><br><span class="line">    construct(station:WeatherStation) &#123;</span><br><span class="line">        <span class="keyword">this</span>.station = station;</span><br><span class="line">    &#125;    </span><br><span class="line">    </span><br><span class="line">    update() &#123;</span><br><span class="line">        <span class="keyword">this</span>.station.getTemp();</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h2 id="Decorator-Pattern"><a href="#Decorator-Pattern" class="headerlink" title="Decorator Pattern"></a>Decorator Pattern</h2><p> Decorator</p>
+<p> AddOnDecoractor is-A Beverage<br> SolidCoffeeCLass is-A Beverage<br> Decorator is-A AddOnDecoractor<br> Decorate Has-A SolidCoffeeCLass</p>
+<p> This should only be used when the Cost() function is vastly different from each other.</p>
+ <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> Beverage() &#123;</span><br><span class="line">	<span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">cost</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> AddOnDecorator <span class="keyword">extends</span> Beverage &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">cost</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Espresso <span class="keyword">extends</span> Beverage &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">cost</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Caramel <span class="keyword">extends</span> AddOnDecorator &#123;</span><br><span class="line">	</span><br><span class="line">	Beverage $beverage;</span><br><span class="line"></span><br><span class="line">	__constructor(Beverage $beverage) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.beverage = $beverage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">cost</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>-&gt;beverage-&gt;cost() + <span class="string">'0.2'</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$coffee = <span class="keyword">new</span> Caramel(<span class="keyword">new</span> Espresso());</span><br><span class="line">$coffee-&gt;cost();</span><br><span class="line">---&gt; <span class="number">1.2</span></span><br><span class="line"> </span><br><span class="line"> </span><br></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -398,20 +395,19 @@ WeatherStatio">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2019/05/15/Decorator/">
+                <a href="/2019/05/15/Factory/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Decorator">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Factory">
                         
-                        <span class="card-title">Decorator</span>
+                        <span class="card-title">Factory</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Decorator Pattern Decorator
- AddOnDecoractor is-A Beverage SolidCoffeeCLass is-A Beverage Decorator is-A AddOnDecoractor
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -444,24 +440,26 @@ WeatherStatio">
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/13/Strategy/">
+                <a href="/2019/05/15/Observer/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Strategy Pattern">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Observer Pattern">
                         
-                        <span class="card-title">Strategy Pattern</span>
+                        <span class="card-title">Observer Pattern</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Strategy PatternStrategy Pattern is a commonly used pattern for OOP.The idea is to use Has-A relation replace Is-A relat
+                            Observer PatternObserver Pattern is commonly use to implement Pub/Sub model.
+IObservable Has-A IObservable
+WeatherStatio
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-15
                             </span>
                         <span class="publish-author">
                             
