@@ -21,6 +21,10 @@ Darcula color scheme from the JetBrains family of IDEs
     padding: 0;
 }
 
+.highlight .title{
+    font-size: 1em;
+}
+
 .highlight table td{
     border: none;
     padding: 0;
