@@ -4,10 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Observer Pattern, Ray Of Programming">
-    <meta name="description" content="Observer PatternObserver Pattern is commonly use to implement Pub/Sub model.
-IObservable Has-A IObservable
-WeatherStatio">
+    <meta name="keywords" content="Reflection, Ray Of Programming">
+    <meta name="description" content="What I learn from a collapse of a startup.For the last two years I have been working in a startup named DSYNC. It provid">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +13,7 @@ WeatherStatio">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Observer Pattern | Ray Of Programming</title>
+    <title>Reflection | Ray Of Programming</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -208,13 +206,13 @@ WeatherStatio">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Observer Pattern
+                        Reflection
                     </div>
                 </div>
             </div>
@@ -325,8 +323,8 @@ WeatherStatio">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Design-Pattern/" target="_blank">
-                                <span class="chip bg-color">Design Pattern</span>
+                            <a href="/tags/Business/" target="_blank">
+                                <span class="chip bg-color">Business</span>
                             </a>
                         
                     </div>
@@ -340,7 +338,7 @@ WeatherStatio">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-05-15
+                    2019-05-20
                 </div>
 
                 
@@ -351,12 +349,13 @@ WeatherStatio">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Observer-Pattern"><a href="#Observer-Pattern" class="headerlink" title="Observer Pattern"></a>Observer Pattern</h3><p>Observer Pattern is commonly use to implement Pub/Sub model.</p>
-<p>IObservable Has-A IObservable</p>
-<p>WeatherStation Is-A IObservable</p>
-<p>PhoneDisplay Is-A Observer</p>
-<p>PhoneDisplay Has-A WeatherStation</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IObservable &#123;</span><br><span class="line">    add(Observer)</span><br><span class="line">    remove(Observer)</span><br><span class="line">    notify(Observer)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> IObserver &#123;</span><br><span class="line">    update()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> weatherStation <span class="keyword">implements</span> Observable &#123;</span><br><span class="line">   </span><br><span class="line">   observers: array;</span><br><span class="line">   </span><br><span class="line">   add (observer:IObserver) &#123;</span><br><span class="line">   </span><br><span class="line">        observers.push(observer);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   remove (observer:IObserver) &#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   notify () &#123;</span><br><span class="line">        observers.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">observer</span>) </span>&#123;</span><br><span class="line">            observer.update();</span><br><span class="line">        &#125;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> phoneDisplay <span class="keyword">implements</span> Observable &#123;</span><br><span class="line">    </span><br><span class="line">    construct(station:WeatherStation) &#123;</span><br><span class="line">        <span class="keyword">this</span>.station = station;</span><br><span class="line">    &#125;    </span><br><span class="line">    </span><br><span class="line">    update() &#123;</span><br><span class="line">        <span class="keyword">this</span>.station.getTemp();</span><br><span class="line">        <span class="comment">//do something</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h3 id="What-I-learn-from-a-collapse-of-a-startup"><a href="#What-I-learn-from-a-collapse-of-a-startup" class="headerlink" title="What I learn from a collapse of a startup."></a>What I learn from a collapse of a startup.</h3><p>For the last two years I have been working in a startup named DSYNC. It provide integration service for SMB.<br>The service is rather popular and we are wining over quite a few major clients.<br>However, the business failed miserably due to founder’s personal issue.</p>
+<p>Here are a few things that I learnt along the process. I am just writing it down for future reference.</p>
+<h4 id="Investor-Relation-is-paramount-especially-if-the-business-needs-external-capital-to-operate"><a href="#Investor-Relation-is-paramount-especially-if-the-business-needs-external-capital-to-operate" class="headerlink" title="Investor Relation is paramount especially if the business needs external capital to operate."></a>Investor Relation is paramount especially if the business needs external capital to operate.</h4><p>   Proper governance will help to keep the investor’s confidence at a higher level.Coming up different charts/figures for different financial aspect does sounds trivial and adding extra work to founder’s hand.It’s especially difficult for start ups as they are normally lacking resource.<br>   However, it’s important to deliver these figures on time. Investors have the right to know what is happening with their investments.<br>   In the early days of Dsync, the financial reporting and management side of things are in total chaos.i.e the is no clear statistics for sales/cost/growth etc. Although, this is a trivial thing to do, it’s very important to keep this on track.<br>   Here I would personally thank Nicolas and Martin trying to bring things back on track.<br>   However, the communication broke down for too long and the confidence can’t be recover once lost.  </p>
+<h4 id="Company-lacks-proper-governance-will-fail-eventually"><a href="#Company-lacks-proper-governance-will-fail-eventually" class="headerlink" title="Company lacks proper governance will fail eventually."></a>Company lacks proper governance will fail eventually.</h4><p>   Most of the start up think is okay to be lacking proper governance. Here are few basic things that need to be done as a founder/director.<br>   Financial report/payrolls etc.</p>
+<h4 id="Founder’s-personal-life-does-matter-as-it-affect-the-mental-stability-of-the-person"><a href="#Founder’s-personal-life-does-matter-as-it-affect-the-mental-stability-of-the-person" class="headerlink" title="Founder’s personal life does matter as it affect the mental stability of the person."></a>Founder’s personal life does matter as it affect the mental stability of the person.</h4><p>   A startup can’t afford one of the key member/founder no working which still getting paid a significant amount.</p>
+<h4 id="Healthy-partnership-and-referral-programs-are-important-to-a-early-startup"><a href="#Healthy-partnership-and-referral-programs-are-important-to-a-early-startup" class="headerlink" title="Healthy partnership and referral programs are important to a early startup."></a>Healthy partnership and referral programs are important to a early startup.</h4><p>   As a B2B business, most of our customers are from partner/referrals.<br>   Especially for major accounts, most of the revenue are actually coming from those major account.<br>   They usually have more complicated requirements but also paying much more than normal SMB client.</p>
+<h4 id="customer-service-support-is-important-to-expand-customer-base-in-the-long-term"><a href="#customer-service-support-is-important-to-expand-customer-base-in-the-long-term" class="headerlink" title="customer service/support is important to expand customer base in the long term"></a>customer service/support is important to expand customer base in the long term</h4><p>More to add…   </p>
 
             </div>
             <hr>
@@ -396,28 +395,28 @@ WeatherStatio">
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2019/05/15/Decorator/">
+                <a href="/2019/05/20/Reflection/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Decorator">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Reflection">
                         
-                        <span class="card-title">Decorator</span>
+                        <span class="card-title">Reflection</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Decorator Pattern Decorator
- AddOnDecoractor is-A Beverage SolidCoffeeCLass is-A Beverage Decorator is-A AddOnDecoractor
+                            What I learn from a collapse of a startup.For the last two years I have been working in a startup named DSYNC. It provid
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -426,11 +425,12 @@ WeatherStatio">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Design-Pattern/" target="_blank">
-                        <span class="chip bg-color">Design Pattern</span>
+                    <a href="/tags/Business/" target="_blank">
+                        <span class="chip bg-color">Business</span>
                     </a>
                     
                 </div>
@@ -444,24 +444,24 @@ WeatherStatio">
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/13/leetCode1/">
+                <a href="/2019/05/15/Factory/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="LeetCode general Solution for BST In Order Traverse">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Factory">
                         
-                        <span class="card-title">LeetCode general Solution for BST In Order Traverse</span>
+                        <span class="card-title">Factory</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            In Order TraverseThere are a quite few leet code questions that is based on BST traverse.Here is a general template that
+                            Factory Patterns are normally use to abstract away the logic for create a product.i.e creating a product by passing thro
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-15
                             </span>
                         <span class="publish-author">
                             
@@ -474,8 +474,8 @@ WeatherStatio">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Algorithm/" target="_blank">
-                        <span class="chip bg-color">Algorithm</span>
+                    <a href="/tags/Design-Pattern/" target="_blank">
+                        <span class="chip bg-color">Design Pattern</span>
                     </a>
                     
                 </div>
